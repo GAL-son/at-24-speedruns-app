@@ -7,9 +7,9 @@ export default function Navbar() {
         <nav className="navbar navbar-dark navbar-expand-lg">
             <div className="d-flex flex-row justify-content-between align-items-center w-100">
                 <div className='ms-2 d-flex flex-row flex-shrink-1'>
-                    <a className="navbar-brand">Navbar</a>
+                    <a className="navbar-brand">Speedruns</a>
                     <div className="navbar-nav">
-                        <a className="nav-link" aria-current="page" href="#">Home</a>
+                        <a className="nav-link" aria-current="page" href="#">All games</a>
                     </div>
                 </div>
 
