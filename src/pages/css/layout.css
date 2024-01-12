@@ -1,0 +1,16 @@
+.main {
+    min-height: 100vh;
+    
+    background-image: url("../../assets/images/background/space-background.png");
+    background-size: 40%;
+    
+}
+
+.content {
+    margin: 3rem;
+    padding: 1rem;
+
+    border-radius: 0.3rem;
+
+    background-color: rgba(4, 114, 83, 0.558);
+}

@@ -14,7 +14,8 @@ function App() {
       errorElement: <ErrorPage/>,
       children: [
         {
-          path: "test",
+          index: true,
+          // path: "test",
           element: <div>Test</div>
         }
       ]
@@ -22,9 +23,9 @@ function App() {
   ])
 
   return (
-    <React.StrictMode>
+    <div>
       <RouterProvider router={router}/>
-    </React.StrictMode>
+    </div>
   );
 }
 
