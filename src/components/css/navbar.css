@@ -1,0 +1,8 @@
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    background-color: #216869;
+    border-bottom: solid 5px #143f40;
+}
