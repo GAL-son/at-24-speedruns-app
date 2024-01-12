@@ -1,0 +1,11 @@
+.search {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown {
+    width: 100%;
+    margin-top: 0.3rem;
+    position: absolute;
+    background-color: white;
+}

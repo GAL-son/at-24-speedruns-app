@@ -1,4 +1,5 @@
 import './css/navbar.css'
+import Search from './search'
 
 export default function Navbar() {
 
@@ -13,10 +14,11 @@ export default function Navbar() {
                 </div>
 
                 {/* SEARCH COMPONENT */}
-                <form className="d-flex ">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div className='w-50'><Search 
+                    isDropdown={true}
+                    dropdownDataSource={[1,2,3,4]}
+                    dropdownItem={<span>lmao</span>}
+                /></div>
 
                 {/* Account info Component */}
                 <div className='me-2'>ACCOUNT INFO</div>
