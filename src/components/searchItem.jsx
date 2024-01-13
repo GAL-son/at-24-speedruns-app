@@ -1,21 +1,28 @@
 import './css/searchItem.css'
+import noCover from '../assets/images/holders/noCover.png'
 
 export default function searchItem(props) {
     const {content} = props;
+    console.log(props)
 
     return(
         <div className="d-flex flex-row w-50">
             <div className="gameCover">
-                <img src="https://static.posters.cz/image/1300/plakaty/call-of-duty-mw3-cover-i11163.jpg" alt="" />
+                <img src={content.image} alt="" onError={({currentTarget}) => {
+                currentTarget.onError = null;
+                currentTarget.src = noCover;}}/>
             </div>
             <div className="flex-grow-1 d-flex flex-column justify-content-left align-items-left pt-2">
-                <h4>Call of Duty: Modern Warfare 3</h4>
-                <p>- 2011 -</p>
+                <h4>{content.name}</h4>
+                <p>- {content.releaseYear} -</p>
                 <div className='d-flex flex-row flex-wrap'>
-                    <span className='badge badge-pill ps4'>PS3</span>
-                    <span className='badge badge-pill xo'>XBOX 360</span>
+                    {content.gameOnPlatforms.map(p => {
+                        return(
+                            <div className={'badge badge-pill ' + p.name.toLowerCase()}>{p.name}</div>
+                        )
+                    })}
                 </div>
-                <span>Number of runs</span>
+                <span>{content.averageRating}</span>
             </div>
         </div>
     )

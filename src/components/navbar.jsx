@@ -7,8 +7,12 @@ import './css/navbar.css'
 import searchItem from './searchItem'
 
 export default function Navbar() {
-
     
+    const getGamesNav = () => {
+        return getGames()
+            .then(res => {return res})
+            .catch(err => {return err})
+    }
 
     return(
         <nav className="navbar navbar-dark navbar-expand-lg">
@@ -23,7 +27,7 @@ export default function Navbar() {
                 {/* SEARCH COMPONENT */}
                 <div className='w-50'><Search 
                     isDropdown={true}
-                    dropdownDataSource={getGames()}
+                    dropdownDataSource={getGames}
                     dropdownItem={searchItem}
                 /></div>
 

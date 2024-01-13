@@ -18,6 +18,11 @@
     font-size: 0.6rem;
 }
 
+.phone {
+    color: white;
+    background-color: #c75600;
+}
+
 .ps4 {
     color: white;
     background-color: navy;
