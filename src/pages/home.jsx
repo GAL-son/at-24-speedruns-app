@@ -9,7 +9,6 @@ export function loader() {
 
 export default function Home() {
 
-
     return(
         <div className="d-flex flex-row">
 
@@ -19,18 +18,18 @@ export default function Home() {
                     <div>
                         <List content={[1,2,3,4,5]} Item={Time}/>
                     </div>
-                </div> 
+                </div>
             </div>
 
             <div className="side d-flex flex-column">
                 <div>
                     Popular games
 
-                    
-                </div> 
+
+                </div>
                 <div>
                     Most active users
-                </div> 
+                </div>
             </div>
 
         </div>
