@@ -15,7 +15,6 @@ export default function Search(params) {
     const handleFocus = (e) => setSearchFocused(true);
     const handleBlur = (e) => setSearchFocused(false);
     
-
     const handleChange = (e) => {
         const newVal = e.target.value
         setSearchInput(newVal)
@@ -40,7 +39,7 @@ export default function Search(params) {
             {isDropdown && dropdownActive && searchFocused &&
             <div className="dropdown d-flex flex-row flex-wrap">
                 <div className="text-center">SEARCH RESULT</div>
-                <List content={dropdownDataSource.filter(searchFilter)} Item={searchItem}/>
+                <List content={dropdownDataSource.filter(searchFilter)} Item={dropdownItem}/>
             </div>}
         </div>
     )

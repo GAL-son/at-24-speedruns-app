@@ -1,7 +1,14 @@
-import './css/navbar.css'
+
+import { getGames } from './API/GamesMenager'
+
 import Search from './search'
 
+import './css/navbar.css'
+import searchItem from './searchItem'
+
 export default function Navbar() {
+
+    
 
     return(
         <nav className="navbar navbar-dark navbar-expand-lg">
@@ -16,8 +23,8 @@ export default function Navbar() {
                 {/* SEARCH COMPONENT */}
                 <div className='w-50'><Search 
                     isDropdown={true}
-                    dropdownDataSource={[1,2,3,4]}
-                    dropdownItem={<span>lmao</span>}
+                    dropdownDataSource={getGames()}
+                    dropdownItem={searchItem}
                 /></div>
 
                 {/* Account info Component */}
