@@ -6,11 +6,21 @@ import List from "./list";
 import searchItem from "./searchItem";
 
 export default function Search(params) {
-    const {isDropdown, dropdownDataSource, dropdownItem} = params
+    const {
+        searchHint,
+        searchFilter,
+        isDropdown, 
+        dropdownDataSource, 
+        dropdownItem,
+        dropdownLimit,
+        submitAction,        
+    } = params
 
-    const [searchData, setSeatchData] = useState([])
+    const [searchData, setSearchData] = useState([])
+    
     const [searchLoading, setSearchLoading] = useState(true)
     const [searchError, setSearchError] = useState(false)
+    const [searchFound, setSearchFound] = useState(true)
 
     const [dropdownActive, setDropdownActive] = useState(false)
     const [searchFocused, setSearchFocused] = useState(false)
@@ -21,21 +31,33 @@ export default function Search(params) {
 
     useEffect(() => {
         if(!searchError) {
+            if(searchData.length > 0) {
+                setSearchFound(true)
+            } else {
+                setSearchFound(false)
+            }
             setSearchLoading(false)
         }
         
     }, [searchData])
     
+    
     const handleChange = (e) => {
         setSearchLoading(true)
+        const newVal = e.target.value      
+          
         dropdownDataSource()
             .then(data => {
-                setSeatchData(data)
+                setTimeout(() => {
+                    const filter = getSearchFilter(newVal)
+                    // console.log(data.filter(filter).slice(0))
+                    setSearchData(data.filter(filter).slice())
+                }, 1000)
             }).catch(err => {
                 console.error(err)
                 setSearchError(true)
             })
-        const newVal = e.target.value
+        
         setSearchInput(newVal)
 
         if(newVal != "") {
@@ -45,25 +67,59 @@ export default function Search(params) {
         }
     }
 
-    const searchFilter = (item) => {
-        if(item+2 > searchInput.length) return true
+    const getSearchFilter = (q) => {
+        // console.log(searchFilter)
+        if(searchFilter === undefined) {
+            return (x) => {return true};
+        } else {
+            return searchFilter(q)
+        }
+    }
+
+    const getFilteredData = (data) => {
+        
+        const fdata = data.filter(getSearchFilter())
+        return fdata;
+    }
+
+    const getLimit = () => {
+        if(dropdownLimit === undefined) {
+            return searchData.length
+        } else {
+            return dropdownLimit;
+        }
     }
 
     return(
         <div className="search">    
             <Form id="search-form" role='search' className="d-flex">
-                <input  autocomplete="off" className="form-control" type="search" placeholder="Search games..." aria-label="Search" id="q" value={searchInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}/>
+                <input  autocomplete="off" className="form-control" type="search" placeholder={searchHint} aria-label="Search" id="q" value={searchInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}/>
             </Form>
 
-            {isDropdown && dropdownActive && searchFocused && 
-            <div className="dropdown d-flex flex-row flex-wrap">
+            {isDropdown && dropdownActive &&
+            <div onMouseOver={() => {setSearchFocused(true)}} className="dropdown bg">
                 <div className="text-center">SEARCH </div>
-                {(!searchLoading) && 
-                    <List content={searchData} Item={dropdownItem}/>
+                {(searchLoading) && 
+                    <div className="loading d-flex flex-column justify-content-center align-items-center">
+                        SEARCHING
+                    </div>
                 }
                 {(searchError) && 
                     <div className="text-center">SEARCH FAILED</div>
                 }
+
+                {/* {
+                   <div className="dropdown-items d-flex flex-row flex-wrap">
+                        <List content={searchData} Item={dropdownItem}/>
+                   </div>    
+                }                */}
+                {(searchFound ? 
+                <div className="dropdown-items d-flex flex-row flex-wrap">
+                    <List content={searchData} Item={dropdownItem}/>
+                </div> 
+                :
+                (!searchLoading ) &&<div className="bg-secondary w-100 h-100 text-center">NOT FOUND</div>)}
+                
             </div>}
         </div>
     )

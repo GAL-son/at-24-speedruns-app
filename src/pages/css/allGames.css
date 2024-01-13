@@ -1,0 +1,10 @@
+.all-games-list {
+
+}
+
+.all-games-list > * {
+    height: 20rem;
+    width: 14rem;
+    margin: 10px auto;
+    border-radius: 0.5rem;
+}

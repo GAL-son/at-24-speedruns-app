@@ -1,7 +1,11 @@
+div {
+    color: white
+}
 .gameCover {
     height: 20vh;
     width: 17vh;
     margin: 10px;
+    box-shadow: 0px 8px 24px 0px rgb(11, 11, 11);
 }
 .gameCover img {
     width: 100%;
@@ -10,25 +14,8 @@
 
     border-radius: 0.2rem
 }
-
-.badge {
-    width: fit-content;
-    margin-right: 5px;
-
-    font-size: 0.6rem;
+.item-year {
+    font-size: 0.7rem;
 }
 
-.phone {
-    color: white;
-    background-color: #c75600;
-}
 
-.ps4 {
-    color: white;
-    background-color: navy;
-}
-
-.xo {
-    color: white;
-    background-color: green;
-}
