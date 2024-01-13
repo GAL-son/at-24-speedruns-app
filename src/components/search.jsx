@@ -9,7 +9,12 @@ export default function Search(params) {
     const {isDropdown, dropdownDataSource, dropdownItem} = params
 
     const [dropdownActive, setDropdownActive] = useState(false)
+    const [searchFocused, setSearchFocused] = useState(false)
     const [searchInput, setSearchInput] = useState("")
+
+    const handleFocus = (e) => setSearchFocused(true);
+    const handleBlur = (e) => setSearchFocused(false);
+    
 
     const handleChange = (e) => {
         const newVal = e.target.value
@@ -29,10 +34,10 @@ export default function Search(params) {
     return(
         <div className="search">    
             <Form id="search-form" role='search' className="d-flex">
-                <input  autocomplete="off" className="form-control" type="search" placeholder="Search games..." aria-label="Search" id="q" value={searchInput} onChange={handleChange}/>
+                <input  autocomplete="off" className="form-control" type="search" placeholder="Search games..." aria-label="Search" id="q" value={searchInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}/>
             </Form>
 
-            {isDropdown && dropdownActive && 
+            {isDropdown && dropdownActive && searchFocused &&
             <div className="dropdown d-flex flex-row flex-wrap">
                 <div className="text-center">SEARCH RESULT</div>
                 <List content={dropdownDataSource.filter(searchFilter)} Item={searchItem}/>
