@@ -8,10 +8,12 @@ import './css/layout.css'
 
 export default function Layout()  {
     return(
-        <div className="main">
+        <div className="main d-flex flex-column justify-content-between">
+            <div>
             <Navbar/>
             <div className="content">
                 <Outlet/>
+            </div>
             </div>
             <Footer/>
         </div>
