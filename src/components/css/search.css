@@ -1,0 +1,24 @@
+.search {
+    position: relative;
+    width: 100%;
+}
+
+.form-control {
+    background-color: rgb(51, 51, 51);
+    border-color: rgb(0, 34, 28);
+}
+
+.dropdown {
+    width: 100%;
+    margin-top: 0.3rem;
+    position: absolute;
+    padding: 0.3rem;
+
+    border-radius: 0.5rem;
+
+    background-color: white;
+}
+
+.dropdown * {
+    width: 100%;
+}
