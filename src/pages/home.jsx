@@ -6,7 +6,7 @@ export default function Home() {
     return(
         <div className="d-flex flex-row">
 
-            <div className="main">
+            <div className="home-main">
                 MAIN CONTENT 
             </div>
 
