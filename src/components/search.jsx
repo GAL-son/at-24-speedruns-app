@@ -29,11 +29,11 @@ export default function Search(params) {
     return(
         <div className="search">    
             <Form id="search-form" role='search' className="d-flex">
-                <input className="form-control" type="search" placeholder="Search games..." aria-label="Search" id="q" value={searchInput} onChange={handleChange}/>
+                <input  autocomplete="off" className="form-control" type="search" placeholder="Search games..." aria-label="Search" id="q" value={searchInput} onChange={handleChange}/>
             </Form>
 
             {isDropdown && dropdownActive && 
-            <div className="dropdown d-flex flex-column">
+            <div className="dropdown d-flex flex-row flex-wrap">
                 <div className="text-center">SEARCH RESULT</div>
                 <List content={dropdownDataSource.filter(searchFilter)} Item={searchItem}/>
             </div>}
