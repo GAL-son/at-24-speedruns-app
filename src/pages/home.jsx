@@ -1,6 +1,11 @@
-import Footer from '../components/footer'
+
 import List from '../components/list'
+import Time from '../components/time'
 import './css/home.css'
+
+export function loader() {
+    
+}
 
 export default function Home() {
 
@@ -12,7 +17,7 @@ export default function Home() {
                 <div>
                     New entries
                     <div>
-                        <List content={[1,2,3,4,5]} Item={Footer}/>
+                        <List content={[1,2,3,4,5]} Item={Time}/>
                     </div>
                 </div> 
             </div>
