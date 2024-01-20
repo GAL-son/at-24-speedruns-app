@@ -30,6 +30,7 @@ function App() {
         {
           path: "games/:id",
           loader: gameLoader,
+          errorElement: <ErrorPage/>,
           element: <Game/>
         }
         

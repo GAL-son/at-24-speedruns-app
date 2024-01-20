@@ -22,9 +22,9 @@ export default function ScoreCounter(params) {
     }
 
     return(
-        <div className="score-counter">
+        <div className="score-counter d-flex flex-row align-items-center">
             <div className="score-value">{parseFloat(value).toFixed(2)}</div>
-            <div className="score-icons">
+            <div className="score-icons d-flex flex-row align-items-center">
                 {[...Array(10)].map((x,i) => {
                     return (
                         <div className="score-img">

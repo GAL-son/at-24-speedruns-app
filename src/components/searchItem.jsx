@@ -11,9 +11,9 @@ export default function searchItem(props) {
     const {content} = props;
     
     return(
-       <Link to={`\game\${content.gameId}`} className='search-item d-flex text-decoration-none w-50'>
+       <Link to={"/games/" + content.gameId} className='search-item d-flex text-decoration-none w-50'>
         <div className="d-flex flex-row">
-            <div className="gameCover">
+            <div className="game-cover">
                 <GameCover content={{image: content.image}}/>
             </div>
             <div className="flex-grow-1 d-flex flex-column justify-content-left align-items-left pt-2">

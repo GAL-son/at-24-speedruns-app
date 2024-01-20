@@ -1,21 +1,20 @@
 .score-counter {
     /* border: 1px dashed greenyellow; */
-    display: flex;
-    flex-direction: row;
     max-height: 150px;
     height: inherit;
-    justify-content: center;
-    align-items: center;
 }
 
 .score-value {
     text-align: center;
+    margin: 0px;
     margin-right: 10px;
     width: fit-content;
     flex-shrink: 1;
+    /* border: 1px red dashed; */
 }
 
 .score-icons {
+    /* border: 1px dashed green; */
     height: inherit;
     display: flex;
     flex-direction: row;
@@ -23,10 +22,13 @@
     flex-grow: 1;
     align-items: center;
     margin-right: 10px;
+    margin-top: 0px;
 }
 
 .score-counter img {
-    height: inherit;
+    /* border: 1px dashed purple; */
+    margin-top: 0px !important;
+    height: 100%;
     width: 100%;
     object-fit: cover;
 

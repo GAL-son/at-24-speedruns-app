@@ -11,9 +11,9 @@ import PlatformBadge from '../components/platformbadge';
 import { getRuns } from '../components/API/RunsMenager';
 
 export async function loader() {
-    let games = await getGames();
-    let runs = await getRuns();
-    games = games.slice(0,6)
+    let games = (await getGames()).sort((a,b) => {return b.releaseYear - a.releaseYear});
+    let runs = (await getRuns()).sort().slice(0, 20);
+    games = games.slice(0,9)
     return {games, runs};
 }   
 
@@ -26,22 +26,24 @@ export default function Home() {
 
             <div className="home-main me-3 d-flex flex-column">
                 <div>
-                    <h2>New entries</h2>
-                    <Time 
-                                content={{
-                                    index: "#",
-                                    user: 'Username',
-                                    time: 'Time',
-                                    type: 'Type',
-                                    date: 'Date',
-                                    platform: 'Platform',
-                                    verified: "Verified",
-                                    noImage: true,
-                                    game: {
-                                        name: "Game"
-                                    }
-                                }}
-                            /> 
+                    <h2 className='text-center mb-4'>New entries</h2>
+                    <div className='heading'>
+                        <Time 
+                            content={{
+                                index: "#",
+                                user: 'Username',
+                                time: 'Time',
+                                type: 'Type',
+                                date: 'Date',
+                                platform: 'Platform',
+                                verified: "Verified",
+                                noImage: true,
+                                game: {
+                                    name: "Game"
+                                }
+                            }}
+                        /> 
+                    </div>
                     <div>
                         <List content={runs.map((x, i) => {
                             return {
@@ -60,9 +62,9 @@ export default function Home() {
             </div>
 
             <div className="side flex-grow-1 w-25 d-flex flex-column">
-            <h2>New games</h2>
+            <h2 className='text-center mb-4'>New games</h2>
                 <div className='game-cards w-100 d-flex flex-row flex-wrap justify-content small'>
-                <List content={games.sort((a,b) => {return b.releaseYear - a.releaseYear})} Item={GameCard}></List>
+                <List content={games} Item={GameCard}></List>
                    
                 </div>
                 <div>

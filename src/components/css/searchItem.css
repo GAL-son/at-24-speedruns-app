@@ -1,15 +1,19 @@
+.search-item {
+    height: 200px;
+}
+
 div {
     color: white
 }
-.gameCover {
-    height: 20vh;
+.search-item .game-cover {
+    height: 90%;
     width: 17vh;
     margin: 10px;
     box-shadow: 0px 8px 24px 0px rgb(11, 11, 11);
 }
-.gameCover img {
+.game-cover img {
     width: 100%;
-    height: 20vh;
+    height: 100%;
     object-fit: cover;
 
     border-radius: 0.2rem

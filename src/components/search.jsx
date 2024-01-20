@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Form } from "react-router-dom";
 
 import './css/search.css'
@@ -16,6 +16,8 @@ export default function Search(params) {
         submitAction,        
     } = params
 
+    const searchInputRef = useRef()
+
     const [searchData, setSearchData] = useState([])
     
     const [searchLoading, setSearchLoading] = useState(true)
@@ -27,7 +29,15 @@ export default function Search(params) {
     const [searchInput, setSearchInput] = useState("")
 
     const handleFocus = (e) => setSearchFocused(true);
-    const handleBlur = (e) => setSearchFocused(false);
+    const handleBlur = (e) => {
+        e.preventDefault()
+
+        setTimeout(() => {
+            setSearchFocused(false)    
+        }, 100)
+        
+    
+    };
 
     useEffect(() => {
         if(!searchError) {
@@ -76,6 +86,10 @@ export default function Search(params) {
         }
     }
 
+    const updateFormRef = () => {
+        searchInputRef.current.focus()
+    }
+
     const getFilteredData = (data) => {
         
         const fdata = data.filter(getSearchFilter())
@@ -93,11 +107,11 @@ export default function Search(params) {
     return(
         <div className="search">    
             <Form id="search-form" role='search' className="d-flex">
-                <input  autocomplete="off" className="form-control" type="search" placeholder={searchHint} aria-label="Search" id="q" value={searchInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}/>
+                <input ref={searchInputRef} autocomplete="off" className="form-control" type="search" placeholder={searchHint} aria-label="Search" id="q" value={searchInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}/>
             </Form>
 
             {isDropdown && dropdownActive && searchFocused &&
-            <div onMouseOver={() => {setSearchFocused(true)}} className="dropdown bg">
+            <div onMouseOver={updateFormRef} className="dropdown bg">
                 <div className="text-center">SEARCH </div>
                 {(searchLoading) && 
                     <div className="loading d-flex flex-column justify-content-center align-items-center">
