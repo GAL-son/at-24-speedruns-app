@@ -1,0 +1,42 @@
+loginbox{
+
+}
+.input_basic{
+    color: black;
+    max-width: 200px!important;
+    width: 40%!important;
+}
+label{
+    max-width: 130px;
+    width: 20%!important;
+    text-align:right;
+    margin-right: 1vh;
+}
+.form_basic{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.form_Line{
+    width: 40%;
+    margin: 10px auto auto;
+    display: flex;
+    justify-content:center;
+}
+.form_Line_buttons{
+    width: 30%;
+    margin: 10px auto auto;
+    display: flex;
+    justify-content:space-evenly;
+}
+.form_button{
+    background-color: rgb(15, 75, 55) !important;
+
+}
+.form_button:hover{
+    background-color: rgb(22, 133, 98) !important;
+    border-color:rgb(15, 75, 55) !important; ;
+}

@@ -21,21 +21,21 @@ export const register = (login,email,password,role) => {
         password:password,
         role:role
     }
-    return axios.post(`${userBaseURL}`)
+    return axios.post(`${userBaseURL}`,data)
         .then((res) => {
-            return res.data
+            return {data:res.data,status:res.status}
         })
         .catch((err) => {
             console.log(err)
         })
 }
 
-export const login = (login,password) => {
+export const loginCall = (login,password) => {
     const data={
         login:login,
         password:password
     }
-    return axios.post(`${userBaseURL}`)
+    return axios.post(`${userBaseURL}/login`,data)
         .then((res) => {
             return res.data
         })
