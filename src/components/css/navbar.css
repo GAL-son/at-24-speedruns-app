@@ -6,3 +6,8 @@ nav {
     background-color: #1d3928;
     border-bottom: solid 5px #102217;
 }
+
+.search-nav {
+    position: absolute;
+    left: 25vw;
+}

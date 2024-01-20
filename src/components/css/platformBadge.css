@@ -1,0 +1,45 @@
+
+.badge {
+    width: fit-content;
+    margin-right: 5px;
+    padding-right: 10px;
+    border-radius: 1rem;
+    font-size: 0.6rem;
+    box-shadow: 0px 8px 20px -5px rgb(11, 11, 11);
+}
+
+.badge img {
+    height: 14px;
+    width: 14px;
+    margin-right: 5px;
+}
+
+.pc {
+    color: black;
+    background-color: silver;
+}
+
+.pc img {
+    filter: invert(100%);
+}
+
+.phone {
+    color: white;
+    background-color: #c75600;
+}
+
+.ps4 {
+    color: white;
+    background-color: navy;
+}
+
+.ps5 {
+    color: white;
+    background-color: rgb(0, 0, 160);
+}
+
+
+.xboxone {
+    color: white;
+    background-color: green;
+}

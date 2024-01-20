@@ -3,9 +3,9 @@ export default function List(params) {
 
     return(
         <>
-        {content.map(data => {
+        {content.map((data, index) => {
             return (
-                <Item content={data}/>
+                <Item index={index} content={data}/>
             )
         })}
         </>

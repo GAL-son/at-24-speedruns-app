@@ -5,7 +5,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Layout from './pages/layout';
 import ErrorPage from './pages/error';
-import Home from './pages/home';
+
+import Home, {loader as homeLoader} from './pages/home';
+import AllGames, {loader as allGamesLoader} from './pages/allGames';
 
 function App() {
   const router = createBrowserRouter([
@@ -16,8 +18,13 @@ function App() {
       children: [
         {
           index: true,
-          // path: "test",
+          loader: homeLoader,
           element: <Home/>,
+        },
+        {
+          path:"games",
+          loader: allGamesLoader,
+          element: <AllGames/>
         }
       ]
     },
