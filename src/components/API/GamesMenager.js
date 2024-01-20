@@ -95,7 +95,7 @@ export const assignPlatformToGame = (gameId, platformId, token) => {
 
 export const deleteGame= (gameId,token) => {
     const header = {headers: {Authorization: `Bearer ${token}`}}
-    return axios.delete(`${gamesBaseURL}/${gameId}`, header)
+    return axios.delete(`${deleteGamesURL}/${gameId}`, header)
         .then((res) => {
             console.log(res)
         })
