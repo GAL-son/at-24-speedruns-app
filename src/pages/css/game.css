@@ -1,0 +1,71 @@
+.game {
+    padding: 2rem;
+}
+
+
+
+.game .game-cover img{
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    height: 40rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.game .game-info {
+    /* border: 1px dashed red; */
+    /* margin-left: 20px; */
+    border-radius: 1rem;
+    width: 30%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.507);
+}
+
+.game .info-bar {
+    /* border: 1px dashed blue; */
+    width: 30%;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background-color: rgba(0, 57, 15, 0.789);
+}
+ 
+.game .score-holder img {
+    margin-top: 1rem;
+    height: 2.8rem;
+}
+
+.game .score-holder {
+    font-size: 1.5rem;
+}
+
+.game .platform-badges {
+    margin-top: 1.5rem;
+}
+
+.game .runs {
+    padding: 1rem;
+    padding-top: 0px;
+    /* border: 1px blue dashed; */
+}
+
+.runs > .heading {
+    text-align: center;
+    margin-bottom: 1rem;
+    border-bottom: 2px darkgreen solid;
+    border-radius: 0.1rem;
+}
+
+.game .runs .tab {
+    display: table;
+    text-align: center;
+}
+
+.tab .heading {
+    font-weight:900;
+}
+
+.heading .time-main {
+    background-color: rgb(0, 54, 9);
+}

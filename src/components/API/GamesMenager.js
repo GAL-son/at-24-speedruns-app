@@ -28,6 +28,16 @@ export const getGame = (gameId) => {
         })
 }
 
+export const getGameRuns = (gameId) => {
+    return axios.get(`${gamesBaseURL}/${gameId}/runs`)
+        .then((res) => {
+            return res.data
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
 export const addGame = (name, releaseYear, description, image, token) => {
     const header = {headers: {Authorization: `Bearer ${token}`}}
     const data = {

@@ -1,26 +1,115 @@
-.gameCard {
+.game-card {
     position: relative
 }
-.gameCard > * {
+.game-card > * {
     height: inherit;
     border-radius: inherit;
 }
 
-.gameCard img {
+.game-card img {
     height: inherit;
     width: 100%;
     object-fit: cover;
 }
 
-.gameCard-info {
-    position: absolute;
+.game-card-info {
+    position:absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+.game-card-bg-gradient {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.game-card-info > * {
+    margin: 5px;
+}
+
+.game-card-title {
+    display: inline-block;
+    /* border: green 1px dashed; */
+    position: relative;
+    bottom: -70%;
+    transition: 0.5s all ease;
+    text-align: end;
+    height: 25%;
+    text-shadow: 2px 2px 6px #000000;
+    z-index: 5;
+}
+
+.game-card-info:hover .game-card-title {
+    bottom: 0%;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.game-card-hidden {
+    transition: 0.7s all ease;
+    position: relative;
+    /* border: blue 1px dashed; */
+    flex-grow: 1;
+    height: 0;
+    filter: opacity(0)
+}
+.game-card-info:hover .game-card-hidden {
+    filter:opacity(100)
+    
+}
+
+.game-card .platform-badges {
+    position: absolute;
     bottom: 0;
+    width: 100%;
+}
+
+.platform-badges > * {
+    margin: 2px;
+}
+
+.game-card-year {
+    text-align: center;
+    color: rgb(207, 207, 207);
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.game-card-desc {
+    /* border: 1px yellow dashed; */
+    font-size: 1.2;
+    padding: 10px;
+    text-align: justify;
+}
+
+.game-card-score {
+    /* border: green 1px dashed; */
+    padding: 0px;
+    width: 100%;
+    height: 30px;
 }
 
 
+/* small cards */
+.small .game-card-title {
+    font-size: 0.8rem;
+    bottom: -50%;
+    height: 40%;
+}
 
-.gameCard-info > * {
-    margin: 15px;
+.small .game-card-info:hover .game-card-title {
+    bottom: -30%;
+}
+
+.small .game-card-info:hover .game-card-hidden {
+    filter:opacity(0)   
+}
+
+.game-card-score {
+    width: 100%;
+    margin-left: 7px;
+    text-shadow: 1px 1px 2px #000000;
 }

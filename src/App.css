@@ -11,6 +11,6 @@
   filter:opacity(60%);
   transition: 0.5s all ease;
 }
-.gradient-hover:hover {
-  filter:opacity(80%);
+*:hover ~ .gradient-hover {
+  filter:opacity(100%);
 }
