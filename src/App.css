@@ -14,3 +14,26 @@
 *:hover ~ .gradient-hover {
   filter:opacity(100%);
 }
+
+.form-narrow {
+  width: 150px;
+}
+
+.form-select {
+  color: white;
+  background-color: rgb(26, 26, 26);
+  border-color: rgb(0, 34, 28);
+}
+
+.form-select:focus {
+  color: white;
+  border: 1px solid rgb(3, 75, 0) !important;
+
+  box-shadow: 0 0 3px rgb(4, 255, 0) !important;
+  background-color: rgb(51, 51, 51);
+}
+
+.disabled-link {
+  pointer-events: none;
+  cursor: pointer;
+}

@@ -6,8 +6,6 @@ import './css/platformBadge.css'
 
 export default function PlatformBadge(params) {
     const {name, type} = params
-    console.log(params);
-
     const mapImage =() => {
         switch (type) {
             case "MOBILE":

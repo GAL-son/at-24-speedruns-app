@@ -14,3 +14,13 @@
 
     background-color: rgba(4, 114, 83, 0.558);
 }
+
+.loader {
+    visibility: collapse;
+    position: absolute;
+}
+
+.loading {
+    filter: saturate(50%);
+    filter: contrast(80%);
+}

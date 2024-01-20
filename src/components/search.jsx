@@ -34,7 +34,7 @@ export default function Search(params) {
 
         setTimeout(() => {
             setSearchFocused(false)    
-        }, 100)
+        }, 200)
         
     
     };

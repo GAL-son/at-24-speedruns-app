@@ -66,3 +66,47 @@
 .heading .time-main {
     background-color: rgb(0, 54, 9);
 }
+
+.game-user-actions {
+    background-color: darkslategrey;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.form-hidden{
+    height: 0;
+    visibility:collapse
+}
+
+.game-form-time div {
+    margin-bottom: 0.5rem;
+}
+
+
+.game-form-time input {
+    margin-left: 1rem;
+}
+
+.game-user-actions .btn {
+    width: 150px;
+}
+
+.game-user-actions .btn-submit:hover {
+    background-color: green ;
+}
+
+.game-user-actions .btn-clear:hover {
+    background-color: rgb(128, 0, 0) ;
+}
+.user-control-score .score-counter {
+    width: 80%;
+}
+
+.user-control-score .score-icons {
+    flex-grow: 1;
+    justify-content: space-evenly !important;
+}
+
+.user-control-score .score-counter img {
+    height: 5rem;
+}

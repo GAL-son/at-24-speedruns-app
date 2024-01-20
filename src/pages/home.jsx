@@ -9,26 +9,51 @@ import GameCover from '../components/gameCover';
 import GameCard from '../components/gameCard';
 import PlatformBadge from '../components/platformbadge';
 import { getRuns } from '../components/API/RunsMenager';
+import { decodeToken } from 'react-jwt';
 
 export async function loader() {
     let games = (await getGames()).sort((a,b) => {return b.releaseYear - a.releaseYear});
     let runs = (await getRuns()).sort().slice(0, 20);
+let token = await localStorage.getItem("token");
+    console.log(token)
+
+    if(token !== null) {
+        token = decodeToken(token)
+    }
+
+    const user = {
+        token: token,
+        loggedIn: (token !== null) || true,
+        username: "GAL_son",
+        role: 'admin'
+    }
     games = games.slice(0,9)
-    return {games, runs};
+    return {user, games, runs};
 }   
 
 export default function Home() {
 
-    const {games, runs} = useLoaderData()
+    const {games, runs, user} = useLoaderData()
+
+    const stortByDate = (a, b) => {
+        return new Date(b) - new Date(a);
+    }
 
     return(
         <div className="d-flex flex-row">
 
             <div className="home-main me-3 d-flex flex-column">
+                {(user.loggedIn) && 
+                    <div className='home-user-actions'>
+                        <h1>Welcome {user.username}</h1>
+                        USER ACTIONS
+                    </div>
+                }
                 <div>
                     <h2 className='text-center mb-4'>New entries</h2>
                     <div className='heading'>
                         <Time 
+                            disableLink={true}
                             content={{
                                 index: "#",
                                 user: 'Username',
@@ -44,8 +69,10 @@ export default function Home() {
                             }}
                         /> 
                     </div>
-                    <div>
-                        <List content={runs.map((x, i) => {
+                    <div className='times'>
+                        <List content={runs.sort((a,b) => {
+                            return stortByDate(a.date, b.date)
+                        }).map((x, i) => {
                             return {
                                 index: i+1,
                                 user: x.user.login,

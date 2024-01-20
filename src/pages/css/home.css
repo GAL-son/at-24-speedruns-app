@@ -13,3 +13,13 @@
     background-color: rgb(0, 54, 9);
 }
 
+.home-main .times .time-main:hover {
+    background-color: rgb(0, 118, 20);
+}
+
+.home-user-actions {
+    background-color: darkslategrey;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
