@@ -8,7 +8,7 @@ export default function GameCard(props) {
     const {content} = props
 
     return (
-        <Link to="lol/" className='game-card'> 
+        <Link to={"/games/" + content.gameId} className='game-card'> 
             <GameCover content={{image: content.image}}/>
             <div className='game-card-info d-flex flex-column lign-items-center justify-content-end'>
                 <h5 className='d-flex flex-column justify-content-center align-items-center game-card-title'>

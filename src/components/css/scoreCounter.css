@@ -1,4 +1,5 @@
 .score-counter {
+    /* border: 1px dashed greenyellow; */
     display: flex;
     flex-direction: row;
     max-height: 150px;
@@ -26,7 +27,7 @@
 
 .score-counter img {
     height: inherit;
-    /* width: 100%; */
+    width: 100%;
     object-fit: cover;
 
 }

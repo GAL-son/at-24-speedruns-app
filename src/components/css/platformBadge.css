@@ -13,6 +13,18 @@
     margin-right: 5px;
 }
 
+.big .badge {
+    font-size: 1rem;
+    padding-right: 15px;
+    border-radius: 15rem;
+}
+
+.big .badge img {
+    height: 25px;
+    width: 25px;
+    margin-right: 9px;
+}
+
 .pc {
     color: black;
     background-color: silver;

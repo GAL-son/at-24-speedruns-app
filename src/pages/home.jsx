@@ -7,16 +7,19 @@ import Time from '../components/time'
 import './css/home.css'
 import GameCover from '../components/gameCover';
 import GameCard from '../components/gameCard';
+import PlatformBadge from '../components/platformbadge';
+import { getRuns } from '../components/API/RunsMenager';
 
 export async function loader() {
     let games = await getGames();
+    let runs = await getRuns();
     games = games.slice(0,6)
-    return {games};
+    return {games, runs};
 }   
 
 export default function Home() {
 
-    const {games} = useLoaderData()
+    const {games, runs} = useLoaderData()
 
     return(
         <div className="d-flex flex-row">
@@ -24,8 +27,34 @@ export default function Home() {
             <div className="home-main me-3 d-flex flex-column">
                 <div>
                     <h2>New entries</h2>
+                    <Time 
+                                content={{
+                                    index: "#",
+                                    user: 'Username',
+                                    time: 'Time',
+                                    type: 'Type',
+                                    date: 'Date',
+                                    platform: 'Platform',
+                                    verified: "Verified",
+                                    noImage: true,
+                                    game: {
+                                        name: "Game"
+                                    }
+                                }}
+                            /> 
                     <div>
-                        <List content={[1,2,3,4,5]} Item={Time}/>
+                        <List content={runs.map((x, i) => {
+                            return {
+                                index: i+1,
+                                user: x.user.login,
+                                time: x.time,
+                                type: x.type,
+                                date: x.date.substring(0, 19).replace('T', " "),
+                                platform: <PlatformBadge name={x.platform.name} type={x.platform.type}/>,
+                                game: x.game,
+                                verified: x.confirmedBy,
+                            }
+                        })} Item={Time}/>
                     </div>
                 </div>
             </div>
