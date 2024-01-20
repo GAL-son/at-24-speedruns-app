@@ -8,6 +8,8 @@ import ErrorPage from './pages/error';
 
 import Home, {loader as homeLoader} from './pages/home';
 import AllGames, {loader as allGamesLoader} from './pages/allGames';
+import Login from "./pages/login";
+import Register from "./pages/register";
 import Game, {loader as gameLoader} from './pages/game';
 
 function App() {
@@ -28,12 +30,20 @@ function App() {
           element: <AllGames/>
         },
         {
+          path:"login",
+          element: <Login/>
+        },
+        {
+          path:"register",
+          element: <Register/>
+        },
+        {
           path: "games/:id",
           loader: gameLoader,
           errorElement: <ErrorPage/>,
           element: <Game/>
         }
-        
+
       ]
     },
   ])
