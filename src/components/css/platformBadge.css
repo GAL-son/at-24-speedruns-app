@@ -1,7 +1,6 @@
 
 .badge {
     width: fit-content;
-    margin-right: 5px;
     padding-right: 10px;
     border-radius: 1rem;
     font-size: 0.6rem;
@@ -28,18 +27,29 @@
     background-color: #c75600;
 }
 
-.ps4 {
-    color: white;
-    background-color: navy;
+.android {
+    background-color: #3DDC84;
 }
 
-.ps5 {
-    color: white;
-    background-color: rgb(0, 0, 160);
+.ios {
+    background-color: lightgray;
+    color: black;
 }
 
+.ios img {
+    filter: invert(100%);
+}
+
+.android img {
+    filter: invert(100%);
+}
+
+.ps4, .ps5 {
+    color: white;
+    background-color: #0072ce;
+}
 
 .xboxone {
     color: white;
-    background-color: green;
+    background-color: #107c10;
 }

@@ -18,4 +18,12 @@ div {
     font-size: 0.7rem;
 }
 
+.platform-badges >* {
+    margin: 2px;
+}
+
+.search-item .score-counter {
+    width: 90%;
+}
+
 

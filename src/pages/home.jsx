@@ -32,7 +32,7 @@ export default function Home() {
 
             <div className="side flex-grow-1 w-25 d-flex flex-column">
             <h2>New games</h2>
-                <div className='game-cards w-100 d-flex flex-row flex-wrap justify-content'>
+                <div className='game-cards w-100 d-flex flex-row flex-wrap justify-content small'>
                 <List content={games.sort((a,b) => {return b.releaseYear - a.releaseYear})} Item={GameCard}></List>
                    
                 </div>

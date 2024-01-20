@@ -96,7 +96,7 @@ export default function Search(params) {
                 <input  autocomplete="off" className="form-control" type="search" placeholder={searchHint} aria-label="Search" id="q" value={searchInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}/>
             </Form>
 
-            {isDropdown && dropdownActive &&
+            {isDropdown && dropdownActive && searchFocused &&
             <div onMouseOver={() => {setSearchFocused(true)}} className="dropdown bg">
                 <div className="text-center">SEARCH </div>
                 {(searchLoading) && 
