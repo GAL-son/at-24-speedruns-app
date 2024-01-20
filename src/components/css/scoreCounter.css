@@ -1,0 +1,36 @@
+.score-counter {
+    display: flex;
+    flex-direction: row;
+    max-height: 150px;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-value {
+    text-align: center;
+    margin-right: 10px;
+    width: fit-content;
+    flex-shrink: 1;
+}
+
+.score-icons {
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.score-counter img {
+    height: inherit;
+    /* width: 100%; */
+    object-fit: cover;
+
+}
+
+.score-img {
+    margin: 1px;
+}
