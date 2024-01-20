@@ -8,6 +8,8 @@ import ErrorPage from './pages/error';
 
 import Home, {loader as homeLoader} from './pages/home';
 import AllGames, {loader as allGamesLoader} from './pages/allGames';
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +27,14 @@ function App() {
           path:"games",
           loader: allGamesLoader,
           element: <AllGames/>
+        },
+        {
+          path:"login",
+          element: <Login/>
+        },
+        {
+          path:"register",
+          element: <Register/>
         }
       ]
     },
