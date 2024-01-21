@@ -14,12 +14,12 @@ import { decodeToken } from 'react-jwt';
 export async function loader() {
     let games = (await getGames()).sort((a,b) => {return b.releaseYear - a.releaseYear});
     let runs = (await getRuns()).sort().slice(0, 20);
-let token = await localStorage.getItem("token");
-    console.log(token)
+    let token = await localStorage.getItem("token");
+    // console.log(token)
 
     if(token !== null) {
         token = decodeToken(token)
-        console.log(token)
+        // console.log(token)
     }
 
     const user = {

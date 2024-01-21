@@ -21,6 +21,18 @@
 }
 
 .loading {
-    filter: saturate(50%);
-    filter: contrast(80%);
+    filter: brightness(50%)
+}
+
+.loading-text {
+    font-size: 2.4rem;
+    position: fixed;
+    z-index: 1000;
+    text-align: center;
+    width: 100%;
+    top:45vh;
+}
+
+.loading-hidden {
+    visibility: hidden;
 }

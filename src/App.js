@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Layout from './pages/layout';
+import Layout, {loader as layoutLoader } from './pages/layout';
 import ErrorPage from './pages/error';
 
 import Home, {loader as homeLoader} from './pages/home';
@@ -17,6 +17,7 @@ function App() {
     { 
       path: "/", 
       element: <Layout/>, 
+      loader: layoutLoader,
       errorElement: <ErrorPage/>,
       children: [
         {

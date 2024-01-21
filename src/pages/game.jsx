@@ -9,14 +9,15 @@ import Time from '../components/time'
 import List from "../components/list"
 import GameScorer from "../components/gameScorer"
 import { parse, serialize } from "tinyduration"
-import { decodeToken, isExpired } from "react-jwt"
+import { decodeToken, isExpired, } from "react-jwt"
 import { useEffect, useState } from "react"
 import { addRun } from "../components/API/RunsMenager"
 
 export async function loader({params}) {
     const gameData = await getGame(params.id)
     const gameRuns = await getGameRuns(params.id)
-    let token = await localStorage.getItem("token");   
+    let token = await localStorage.getItem("token");
+    const tokenRaw = token;   
 
     if(token !== null) {
         token = decodeToken(token)
@@ -27,6 +28,7 @@ export async function loader({params}) {
         user: {
             loggedIn: token!== null && isExpired(token) ,
             token: token,
+            tokenRaw: tokenRaw,
         },
         game: gameData,
         runs: gameRuns,
@@ -54,6 +56,7 @@ export default function Game() {
 
     const [formValid, setFormValid] = useState(true)
     const [formError, setFormError] = useState("")
+    const [formSucess, setFormSucess] = useState(false)
 
     const getRunTypes = () => {
         const types = [...runs.map(x => x.type)]
@@ -72,12 +75,12 @@ export default function Game() {
             seconds: formData.seconds
         })
 
-        console.log(formData.platform)
-
         const type = (formData.type == 'New') ? formData.newType : formData.type;
-        console.log(user.token.id, game.gameId, time, formData.video, type, JSON.parse(formData.platform).platformId, user.token)
-        await addRun(user.token.id, game.gameId, time, formData.video, type, JSON.parse(formData.platform).platformId, user.token).then(res => {
+        await addRun(user.token.id, game.gameId, time, formData.video, type, JSON.parse(formData.platform).platformId, user.tokenRaw).then(res => {
             console.log(res)
+            setFormError("");
+            setFormSucess(true);
+            
         }).catch(err => {
             setFormError(err.message)
             console.error("EERR", err.message)
@@ -159,7 +162,7 @@ export default function Game() {
                                 <h4 className="">Rate this game</h4>
                                 <GameScorer callback={async (x) => {
                                     console.log(x+1)
-                                    await rateGame(game.gameId, user.token.id, x+1, user.token)
+                                    await rateGame(game.gameId, user.token.id, x+1, user.tokenRaw)
                                         .then(res => {console.log(res)})
                                         .catch(console.err)
                                     
@@ -167,14 +170,21 @@ export default function Game() {
                             </div>
 
                             {/* ADD RUN */}
-                            <div className="d-flex flex-row mb-3 justify-content-center" >
+                            <div className="d-flex flex-row mb-3 mt-5 justify-content-center" >
                                 <h4 className="">Add your run</h4>
                             </div>
                             {(addRunVisible && formError != "") && 
                             <div className="game-form-error ">
                                     <div className="alert alert-danger text-center">{formError}</div>
                             </div>}
-                            <form className={"game-form d-flex flex-row justify-content-around " + ((addRunVisible) ? "" : 'form-hidden')}>
+                            {(addRunVisible && formSucess) && 
+                            <div className="game-form-sucess ">
+                                <div className="alert alert-sucess text-center">Time posted</div>
+                            </div>
+                            }
+                            <form className={"game-form d-flex flex-row justify-content-around " + ((addRunVisible) ? "" : 'form-hidden')} onChange={e => {
+                                setFormSucess(false);
+                            }}>
                             
                                 <div className="game-form-time d-flex flex-column align-items-left align-items-center">
                                     <h4>Time</h4>

@@ -7,10 +7,26 @@ import Search from './search'
 
 import './css/navbar.css'
 import searchItem from './searchItem'
+import { useEffect, useState } from 'react'
+import { decodeToken, isExpired } from 'react-jwt'
 
-export default function Navbar() {
+export default function Navbar(params) {
+
+    const userToken = params.token;
+
+    const [loginState, setLoginState] = useState(false)
+    const [tokenDecode, setTokenDecode] = useState({})
+
+    useEffect(() => {
+        console.log(userToken)
+        if(userToken !== undefined) {
+            setLoginState(true)
+            setTokenDecode(decodeToken(userToken))
+        }
+    }, [userToken])
 
     const searchFilter = (querry) => {
+
         return ((game) => {
             
             const qWords = querry.toLowerCase().split(' ');
@@ -41,7 +57,7 @@ export default function Navbar() {
                 /></div>
 
                 {/* Account info Component */}
-                <Link to='login' className='btn btn-login me-2'>ACCOUNT INFO</Link>
+                <Link to='login' className='btn btn-login me-2'>{(loginState && isExpired(tokenDecode)) ? "Account" : "Login"}</Link>
 
             </div>
         </nav>
