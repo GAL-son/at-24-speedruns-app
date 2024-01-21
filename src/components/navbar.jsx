@@ -18,12 +18,14 @@ export default function Navbar(params) {
     const [tokenDecode, setTokenDecode] = useState({})
 
     useEffect(() => {
-        console.log(userToken)
+        // console.log(userToken)
         if(userToken !== undefined) {
             setLoginState(true)
             setTokenDecode(decodeToken(userToken))
         }
     }, [userToken])
+
+    
 
     const searchFilter = (querry) => {
 
@@ -58,7 +60,7 @@ export default function Navbar(params) {
                 /></div>
 
                 {/* Account info Component */}
-                <Link to={(loginState && !isExpired(tokenDecode)) ? `/user/${tokenDecode.id}` : "/login"} className='btn btn-login me-2'>{(loginState && !isExpired(tokenDecode)) ? tokenDecode.sub : "Login"}</Link>
+                <Link to={(loginState && !isExpired(userToken)) ? `/user/${tokenDecode?.id}` : "/login"} className='btn btn-login me-2'>{(loginState && !isExpired(userToken)) ? tokenDecode?.sub : "Login"}</Link>
 
             </div>
         </nav>

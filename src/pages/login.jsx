@@ -1,10 +1,12 @@
 import './css/login.css'
 import {useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useRevalidator} from "react-router-dom";
 import {loginCall}  from "../components/API/userMenager";
 import {Badge} from "react-bootstrap";
 
-export default function Login() {
+export default function Login(params) {
+    // const login()
+
     const [login, setLogin] = useState("")
     const [password, setPassword] = useState("")
     const [emptyInput,setEmptyInput]=useState(false)
@@ -13,6 +15,9 @@ export default function Login() {
     const [inputStyling,setInputStyling]=useState({})
     const navigation=useNavigate()
     const [displayedAlert,setDisplayedAlert]=useState("")
+
+    const revalidator = useRevalidator()
+
 
 
     const handleChange = (event) => {
@@ -38,22 +43,20 @@ export default function Login() {
         }
        // console.log(login, password)
         await loginCall (login,password)
-            .then((data)=>{
-                console.log(data)
+            .then(async (data)=>{
+                // console.log(data)
                 if(data!==null&&typeof(data)!=="undefined")
                 {
                     if (data!==""){
 
                         try {
-                            console.log("LOGIN", String(data))
                             localStorage.setItem("token", String(data))
+                            revalidator.revalidate()
+                            navigation("/", {replace: true})
                         }
                         catch (error)
                         {
                             console.log(error)
-                        }
-                        finally {
-                            navigation("/")
                         }
                     }
                 }else {
@@ -73,17 +76,17 @@ export default function Login() {
             <form className={"form_basic"} onSubmit={handleSubmit}>
                 <div className={"form_Line"}><h2>Log in:</h2></div>
                 <div className={"form_Line"}>
-                    <label htmlFor={login}>login:</label>
+                    <label htmlFor={login}>Login:</label>
                     <input className={"form-control input_basic"} style={inputStyling} id={"login"} value={login} type={"text"}
                            onChange={handleChange}/>
                 </div>
                 <div className={"form_Line"}>
-                    <label htmlFor={password}>password:</label>
+                    <label htmlFor={password}>Password:</label>
                     <input className={"form-control input_basic"} style={inputStyling} id={"password"} value={password} type={"password"}
                            onChange={handleChange}/>
                 </div>
                 <div className={"form_Line_buttons"} style={{}}>
-                    <button className={" btn btn-success form_button"} type={"submit"}>log in</button>
+                    <button className={" btn btn-success form_button"} type={"submit"}>Log in</button>
                     <Link to={"/register"}>
                     <button className={"btn btn-success  form_button"} type="button"
                            >Registration

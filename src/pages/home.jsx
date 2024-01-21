@@ -27,7 +27,7 @@ export async function loader() {
         token: token,
         loggedIn: (token !== null && !isExp),
     }
-    games = games.slice(0,12)
+    games = games.slice(0,24)
     return {user, games, runs};
 }   
 
@@ -44,9 +44,8 @@ export default function Home() {
 
             <div className="home-main me-3 d-flex flex-column">
                 {(user.loggedIn) && 
-                    <div className='home-user-actions'>
+                    <div className='home-user-actions mb-3'>
                         <h1>Welcome {user.token.sub}</h1>
-                        USER ACTIONS
                     </div>
                 }
                 <div>
@@ -91,9 +90,6 @@ export default function Home() {
                 <div className='game-cards w-100 d-flex flex-row flex-wrap justify-content small'>
                 <List content={games} Item={GameCard}></List>
                    
-                </div>
-                <div>
-                    Most active users Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci placeat nulla esse quo suscipit cupiditate voluptas fugit, doloribus, vel voluptates odio labore nisi ullam tempore sed magni maxime sint debitis.
                 </div>
             </div>
 

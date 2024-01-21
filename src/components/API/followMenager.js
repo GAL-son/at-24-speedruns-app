@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const localServerAdress = "http://localhost:8080";
-const followsRelatedEndpointsBase = " /speedruns/api/follows";
+const followsRelatedEndpointsBase = "/speedruns/api/follows";
 const followsBaseURL=localServerAdress+followsRelatedEndpointsBase;
 
 export const getFollows = (token) => {
@@ -18,7 +18,6 @@ export const getFollowsForUser = (followerId,token) => {
     const header = {headers: {Authorization: `Bearer ${token}`}}
     return axios.get(`${followsBaseURL}/${followerId}`,header)
         .then((res) => {
-            console.log("RES", res)
             return res.data
         })
         .catch((err) => {

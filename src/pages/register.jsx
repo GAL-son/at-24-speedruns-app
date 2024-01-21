@@ -85,26 +85,26 @@ export default function Register(){
             <form className={"form_basic"} onSubmit={handleSubmit}>
                 <div className={"form_Line"}><h2>Register:</h2></div>
                 <div className={"form_Line"}>
-                    <label htmlFor={login}>login:</label>
+                    <label htmlFor={login}>Login:</label>
                     <input className={"form-control input_basic"} style={inputStyling} id={'login'} value={login} type={"text"} onChange={handleChange}/>
                 </div>
                 <div className={"form_Line"}>
-                    <label htmlFor={email}>email:</label>
+                    <label htmlFor={email}>E-mail:</label>
                     <input className={"form-control input_basic"} style={inputStyling} id={'email'} value={email} type={"text"} onChange={handleChange}/>
                 </div>
                 <div className={"form_Line"}>
-                    <label htmlFor={password}>password:</label>
+                    <label htmlFor={password}>Password:</label>
                     <input className={"form-control input_basic"} style={inputStyling} id={'password'} value={password} type={"password"} onChange={handleChange}/>
                 </div>
                 <div className={"form_Line"}>
-                    <label htmlFor={passwordRep}>repeat password:</label>
+                    <label htmlFor={passwordRep}>Repeat password:</label>
                     <input className={"form-control input_basic"} style={inputStyling} id={'passwordRep'} value={passwordRep} type={"password"} onChange={handleChange}/>
                 </div>
                 <div className={"form_Line_buttons"} style={{}}>
                     <button className={" btn btn-success form_button"}  type={"submit"}>Create account</button>
                     <Link to={"/login"}>
                         <button className={"btn btn-success  form_button"} type="button">
-                            i have an acocunt
+                            I have an acocunt
                         </button>
                     </Link>
 

@@ -1,4 +1,4 @@
-import { json, useLoaderData } from "react-router-dom"
+import { json, useLoaderData, useRevalidator } from "react-router-dom"
 import { getGameRuns, getGame, rateGame } from "../components/API/GamesMenager"
 
 import './css/game.css'
@@ -33,6 +33,7 @@ export async function loader({params}) {
 export default function Game() {
     const {game, runs, user} = useLoaderData()
     const [addRunVisible, setAddRunVisible] = useState(false)
+    const revalidator = useRevalidator()
 
     // Form data
     const [formHours, setFormHours] = useState(0)
@@ -75,6 +76,7 @@ export default function Game() {
             console.log(res)
             setFormError("");
             setFormSucess(true);
+            revalidator.revalidate()
             
         }).catch(err => {
             setFormError(err.message)
@@ -158,7 +160,7 @@ export default function Game() {
                                 <GameScorer callback={async (x) => {
                                     console.log(x+1)
                                     await rateGame(game.gameId, user.token.id, x+1, user.tokenRaw)
-                                        .then(res => {console.log(res)})
+                                        .then(res => {console.log(res); revalidator.revalidate() })
                                         .catch(console.err)
                                     
                                 }}/>

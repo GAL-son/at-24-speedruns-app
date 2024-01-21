@@ -58,3 +58,34 @@
     background-color: rgba(0, 59, 29, 0.716);
     border-radius: 1rem;
 }
+
+.user .user-link {
+    margin: 0.5rem;
+    height: 140px;
+    width: 23%;
+    background-color: rgb(45, 79, 60);
+    border-radius: 0.6rem;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.344);
+
+}
+
+.user-link a {
+    padding: 2rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1.3rem;
+    transition: all 0.2s ease-out;
+}
+
+.user-link:hover a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: rgb(222, 222, 222);
+}
+
+.user .user-stats {
+    background-color: rgba(0, 65, 9, 0.792);
+    padding: 1.0rem;
+
+    border-radius: 1rem;
+}

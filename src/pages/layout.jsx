@@ -7,7 +7,7 @@ import './css/layout.css'
 
 export async function loader() {
     const token = await localStorage.getItem('token');
-
+    console.log("LAYOUT_LOADER")
     return {token: token}
 }
 
