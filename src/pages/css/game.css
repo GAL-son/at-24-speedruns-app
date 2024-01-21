@@ -121,3 +121,14 @@
     background-color: rgba(1, 65, 0, 0.433);
     border-radius: 0.5rem;
 }
+
+.game-form-error .alert {
+    margin: 1rem;
+    padding: 2rem;
+}
+
+.game-form-error .alert-danger {
+    color: rgb(255, 0, 0);
+    background-color: rgba(127, 0, 0, 0.334);
+    border: 1px solid red;
+}

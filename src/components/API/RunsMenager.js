@@ -30,9 +30,11 @@ export const addRun = (userId,gameId,time,videoLink,type,platformId,token) => {
     return axios.post(`${runsBaseURL}`,data,header)
         .then((res) => {
             console.log(res)
+            return res;
         })
         .catch((err) => {
             console.log(err)
+            throw err;
         })
 }
 
