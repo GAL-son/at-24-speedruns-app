@@ -21,6 +21,11 @@
     width: 5%;
 }
 
+.time-index img {
+    height: 25px;
+    width: 25px;
+}
+
 .time-user {
     width: 25%;
 }
@@ -64,4 +69,8 @@
 
 .time-verified img {
     height: 25px;
+}
+
+.time-hidden-index {
+    width: 0%;
 }

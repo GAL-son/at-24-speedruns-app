@@ -23,7 +23,7 @@ export default function searchItem(props) {
                     <ScoreCounter value={content.averageRating} />
                 </div>
                 <div className='mb-3'>
-                    {content.description}
+                {content.description.substring(0, 80) + (content.description.length >= 80 ? "...": "")}
                 </div>
                 <div className='d-flex flex-row flex-wrap platform-badges'>
                     {content.gameOnPlatforms.sort().map(p => {

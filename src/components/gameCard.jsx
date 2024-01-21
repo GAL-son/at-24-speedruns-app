@@ -24,7 +24,7 @@ export default function GameCard(props) {
                         <ScoreCounter value={content.averageRating}/>
                     </div>
                     <div className='game-card-desc'>
-                        {content.description}
+                        {content.description.substring(0, 80) + (content.description.length >= 80 ? "...": "")}
                     </div>
                     <div className='d-flex flex-row flex-wrap justify-content-center platform-badges'>
 

@@ -5,6 +5,9 @@ import './css/time.css'
 import GameCover from './gameCover'
 import crossIcon from '../assets/images/crossIcon.png'
 import checkIcon from '../assets/images/checkIcon.png'
+import trophyGold from '../assets/images/trophyGold.png'
+import trophySilver from '../assets/images/trophySilver.png'
+import trophyBronze from '../assets/images/trophyBronze.png'
 
 export default function Time(props) {
     const {content, index, disableLink} = props
@@ -26,11 +29,26 @@ export default function Time(props) {
 
         return result;
     }
+
+    const indexGraphichs = () => {        
+        switch (content.index) {
+            case 1:
+                return <img src={trophyGold} alt="gold"/>
+            case 2:
+                return <img src={trophySilver} alt="silver"/>
+            case 3:
+                    return <img src={trophyBronze} alt="bronze"/>
+            default:
+                return content.index
+        }
+    }
     
     return (
         <div className="time-main d-flex flex-row align-items-center justify-content-between">
             <div className='d-flex flex-row align-items-center justify-content-between flex-grow-1'>
-                <div className='time-index'>{content.index}</div>
+                {(content.index !== undefined) && 
+                    <div className='time-index'>{indexGraphichs()}</div>
+                }
                 <div className='time-user'>{content.user}</div> 
                 <div className='time-time'>{parseTime()}</div> 
                 <div className='time-type'>{content.type}</div>

@@ -1,6 +1,5 @@
 import './css/login.css'
 import {useState} from "react";
-import 'bootstrap/dist/css/bootstrap.css';
 import {Link, useNavigate} from "react-router-dom";
 import {loginCall}  from "../components/API/userMenager";
 import {Badge} from "react-bootstrap";

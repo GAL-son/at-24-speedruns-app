@@ -41,7 +41,7 @@ export default function Navbar() {
                 /></div>
 
                 {/* Account info Component */}
-                <div className='me-2'>ACCOUNT INFO</div>
+                <Link to='login' className='btn btn-login me-2'>ACCOUNT INFO</Link>
 
             </div>
         </nav>

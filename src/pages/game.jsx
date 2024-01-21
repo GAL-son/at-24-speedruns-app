@@ -11,13 +11,12 @@ import { parse } from "tinyduration"
 import { decodeToken } from "react-jwt"
 import { useState } from "react"
 
-
-
-
 export async function loader({params}) {
     const gameData = await getGame(params.id)
     const gameRuns = await getGameRuns(params.id)
     let token = await localStorage.getItem("token");
+
+    
 
     if(token !== null) {
         token = decodeToken(token)
@@ -36,7 +35,11 @@ export async function loader({params}) {
 export default function Game() {
     const {game, runs, user} = useLoaderData()
     const [addRunVisible, setAddRunVisible] = useState(false)
-    
+
+    const [formHours, setFormHours] = useState(0)
+    const [formMinutes, setFormMinutes] = useState(0)
+    const [formSecons, setFormSeconds] = useState(0)
+
 
     const sortByDuration = (a, b) => {
         const durationToSeconds = (dur) => {
@@ -116,16 +119,22 @@ export default function Game() {
                                     <div className="d-flex flex-column">
                                         <div className="d-flex flex-row justify-content-between align-items-center text-center">
                                             <label htmlFor="">Hours</label>
-                                            <input className="form-control form-narrow" type="number" name="" id="game-form-hours" />
+                                            <input className="form-control form-narrow" value={formHours} onChange={(e) => {
+                                                (e.target.value >= 0 ) && setFormHours(e.target.value)
+                                            }} type="number" name="" id="game-form-hours" />
                                             
                                         </div>
                                         <div className="d-flex flex-row align-items-center justify-content-between text-center">
                                             <label htmlFor="">Minutes</label>
-                                            <input className="form-control form-narrow" type="number" name="" id="game-form-hours" />
+                                            <input className="form-control form-narrow" type="number" value={formMinutes} onChange={(e) => {
+                                                (e.target.value >= 0) && setFormMinutes(e.target.value)
+                                            }} name="" id="game-form-minutes" />
                                         </div>
                                         <div className="d-flex flex-row align-items-center text-center justify-content-between">
                                             <label htmlFor="">Seconds</label>
-                                            <input className="form-control form-narrow" type="number" name="" id="game-form-hours" />
+                                            <input className="form-control form-narrow" value={formSecons} onChange={(e) => {
+                                                (e.target.value >= 0 ) && setFormSeconds(e.target.value)
+                                            }}  type="number" name="" id="game-form-hours" />
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +220,7 @@ export default function Game() {
                         } Item={Time}/>
                     </div>
                     { (runs.length == 0) && 
-                        <div>
+                        <div className="no-runs">
                             NO RUNS YET
                         </div>
                     }   

@@ -66,3 +66,17 @@
     color: white;
     background-color: #107c10;
 }
+
+.switch {
+    color: white;
+    background-color: #df0808;
+}
+
+.n64 {
+    background-color: #f7ba01;
+    color: black;
+}
+
+.n64 img {
+    filter: invert(100%);
+}

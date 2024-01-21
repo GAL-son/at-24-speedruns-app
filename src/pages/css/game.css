@@ -110,3 +110,14 @@
 .user-control-score .score-counter img {
     height: 5rem;
 }
+
+.no-runs {
+    width: 100%;
+    text-align: center;
+    padding: 6rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px black;
+    background-color: rgba(1, 65, 0, 0.433);
+    border-radius: 0.5rem;
+}

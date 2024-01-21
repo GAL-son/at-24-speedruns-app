@@ -11,3 +11,7 @@ nav {
     position: absolute;
     left: 25vw;
 }
+
+.btn-login {
+    color: lightgray;
+}

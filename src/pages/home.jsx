@@ -19,15 +19,14 @@ let token = await localStorage.getItem("token");
 
     if(token !== null) {
         token = decodeToken(token)
+        console.log(token)
     }
 
     const user = {
         token: token,
         loggedIn: (token !== null) || true,
-        username: "GAL_son",
-        role: 'admin'
     }
-    games = games.slice(0,9)
+    games = games.slice(0,12)
     return {user, games, runs};
 }   
 
@@ -45,7 +44,7 @@ export default function Home() {
             <div className="home-main me-3 d-flex flex-column">
                 {(user.loggedIn) && 
                     <div className='home-user-actions'>
-                        <h1>Welcome {user.username}</h1>
+                        <h1>Welcome {user.token.sub}</h1>
                         USER ACTIONS
                     </div>
                 }
@@ -55,7 +54,6 @@ export default function Home() {
                         <Time 
                             disableLink={true}
                             content={{
-                                index: "#",
                                 user: 'Username',
                                 time: 'Time',
                                 type: 'Type',
@@ -74,7 +72,6 @@ export default function Home() {
                             return stortByDate(a.date, b.date)
                         }).map((x, i) => {
                             return {
-                                index: i+1,
                                 user: x.user.login,
                                 time: x.time,
                                 type: x.type,

@@ -17,7 +17,7 @@ export default function AllGames() {
     const {games} = useLoaderData();
 
     return(
-        <div className="all-games-list d-flex flex-row flex-wrap">
+        <div className="all-games-list d-flex flex-row flex-wrap justify-content-left">
             <List content={games} Item={GameCard}/>
         </div>
     )
