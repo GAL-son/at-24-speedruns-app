@@ -24,7 +24,7 @@ let token = await localStorage.getItem("token");
 
     const user = {
         token: token,
-        loggedIn: (token !== null) || true,
+        loggedIn: (token !== null),
     }
     games = games.slice(0,12)
     return {user, games, runs};
