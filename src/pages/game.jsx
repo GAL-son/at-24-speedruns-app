@@ -142,7 +142,7 @@ export default function Game() {
                                     <h4>Type</h4>
                                     <select className="form-select form-narrow" name="" id="">
                                         <option>New</option>
-                                        {runs.map(x => {
+                                        {[...new Set(runs)].map(x => {
                                             return <option value={x}>
                                                 {x.type}
                                             </option>
