@@ -45,6 +45,7 @@ export default function Login() {
                     if (data!==""){
 
                         try {
+                            console.log("LOGIN", String(data))
                             localStorage.setItem("token", String(data))
                         }
                         catch (error)
@@ -53,7 +54,6 @@ export default function Login() {
                         }
                         finally {
                             navigation("/")
-                            window.location.reload()
                         }
                     }
                 }else {

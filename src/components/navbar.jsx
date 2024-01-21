@@ -58,7 +58,7 @@ export default function Navbar(params) {
                 /></div>
 
                 {/* Account info Component */}
-                <Link to='login' className='btn btn-login me-2'>{(loginState && isExpired(tokenDecode)) ? tokenDecode.sub : "Login"}</Link>
+                <Link to={(loginState && !isExpired(tokenDecode)) ? `/user/${tokenDecode.id}` : "/login"} className='btn btn-login me-2'>{(loginState && !isExpired(tokenDecode)) ? tokenDecode.sub : "Login"}</Link>
 
             </div>
         </nav>

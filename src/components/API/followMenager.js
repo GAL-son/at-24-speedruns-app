@@ -6,24 +6,23 @@ const followsBaseURL=localServerAdress+followsRelatedEndpointsBase;
 
 export const getFollows = (token) => {
     const header = {headers: {Authorization: `Bearer ${token}`}}
-    return axios.get(`${followsBaseURL}`,header,)
+    return axios.get(`${followsBaseURL}`,header)
         .then((res) => {
             return res.data
         })
         .catch((err) => {
-            console.log(err)
+            console.error(err)
         })
 }
-
-
 export const getFollowsForUser = (followerId,token) => {
     const header = {headers: {Authorization: `Bearer ${token}`}}
-    return axios.get(`${followsBaseURL}/${followerId}`,header,)
+    return axios.get(`${followsBaseURL}/${followerId}`,header)
         .then((res) => {
+            console.log("RES", res)
             return res.data
         })
         .catch((err) => {
-            console.log(err)
+            console.error(err)
         })
 }
 
@@ -35,10 +34,12 @@ export const followUser = (followerId,followingId,token) => {
     }
     return axios.post(`${followsBaseURL}`,data,header)
         .then((res) => {
+            return(res)
             console.log(res)
         })
         .catch((err) => {
             console.log(err)
+            throw err;
         })
 }
 export const deleteFollow = (followerId,followingId,token) => {

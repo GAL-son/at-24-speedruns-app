@@ -49,19 +49,19 @@ export default function Time(props) {
                 {(content.index !== undefined) && 
                     <div className='time-index'>{indexGraphichs()}</div>
                 }
-                <div className='time-user'>{content.user}</div> 
-                <div className='time-time'>{parseTime()}</div> 
-                <div className='time-type'>{content.type}</div>
-                <div className='time-platform d-flex flex-row justify-content-center'>{content.platform}</div>
-                <div className='time-date'>{content.date}</div>
-            </div>
-            {(content.game !== undefined) && 
+                {(content.user !== undefined) && <Link to={"/user/" + content.user.userId} className={"time-user "  + ((disableLink) ? "disabled-link" : "")}>{content.user.login}</Link> }
+                {(content.game !== undefined) && 
                 <Link to={"/games/" + content.game.gameId} className={"time-game d-flex flex-row align-items-center " + ((disableLink) ? "disabled-link" : "")}>
                    {(content.noImage === undefined) && 
                     <GameCover content={{image: content.game.image}}/>}
                     <div className='text-center flex-grow-1' >{content.game.name}</div>
                 </Link>
             }
+                <div className='time-time'>{parseTime()}</div> 
+                <div className='time-type'>{content.type}</div>
+                <div className='time-platform d-flex flex-row justify-content-center'>{content.platform}</div>
+                <div className='time-date'>{content.date}</div>
+            </div>
             <div className='time-verified d-flex flex-row justify-content-center'>
                 {(!isNaN(content.verified)) ? 
                 <img src={(content.verified>0) ? checkIcon : crossIcon} alt="" />:

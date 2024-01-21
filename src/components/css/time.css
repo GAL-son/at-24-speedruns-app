@@ -74,3 +74,13 @@
 .time-hidden-index {
     width: 0%;
 }
+
+
+.time-main a {
+    text-decoration: none;
+    color: white;
+}
+
+.time-main a:hover {
+    color: lightgray;
+}

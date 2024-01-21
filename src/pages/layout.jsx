@@ -22,7 +22,7 @@ export default function Layout()  {
             <div className={"loading-text " + ((navigation.state === 'loading') ? "" : "loading-hidden")}>
                 Loading...
             </div>
-            <div className={"main d-flex flex-column justify-content-between " + ((navigation.state === 'loading') ? "loading" : "") }>
+            <div className={"main d-flex flex-column justify-content-between " }>
                 <div>
                     <Navbar token={token}/>
                     <div className={"content"}>

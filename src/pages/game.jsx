@@ -17,18 +17,13 @@ export async function loader({params}) {
     const gameData = await getGame(params.id)
     const gameRuns = await getGameRuns(params.id)
     let token = await localStorage.getItem("token");
-    const tokenRaw = token;   
-
-    if(token !== null) {
-        token = decodeToken(token)
-    }
 
     console.log(token)
     return {
         user: {
-            loggedIn: token!== null && isExpired(token) ,
-            token: token,
-            tokenRaw: tokenRaw,
+            loggedIn: token!== null && !isExpired(token) ,
+            token: decodeToken(token),
+            tokenRaw: token,
         },
         game: gameData,
         runs: gameRuns,
@@ -327,9 +322,10 @@ export default function Game() {
                     <div className="tab">
                         <div className="heading">
                             <Time 
+                                disableLink={true}
                                 content={{
                                     index: "#",
-                                    user: 'Username',
+                                    user: {login: "Username"},
                                     time: 'Time',
                                     type: 'Type',
                                     date: 'Date',
@@ -344,7 +340,7 @@ export default function Game() {
                             }).map((x,i) => {
                                 return {
                                     index: i+1,
-                                    user: x.user.login,
+                                    user: x.user,
                                     time: x.time,
                                     type: x.type,
                                     date: x.date.substring(0, 19).replace('T', " "),

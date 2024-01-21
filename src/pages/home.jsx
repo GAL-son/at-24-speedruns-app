@@ -9,22 +9,23 @@ import GameCover from '../components/gameCover';
 import GameCard from '../components/gameCard';
 import PlatformBadge from '../components/platformbadge';
 import { getRuns } from '../components/API/RunsMenager';
-import { decodeToken } from 'react-jwt';
+import { decodeToken, isExpired } from 'react-jwt';
 
 export async function loader() {
     let games = (await getGames()).sort((a,b) => {return b.releaseYear - a.releaseYear});
     let runs = (await getRuns()).sort().slice(0, 20);
     let token = await localStorage.getItem("token");
     // console.log(token)
-
+    const isExp = isExpired(token)
     if(token !== null) {
         token = decodeToken(token)
-        // console.log(token)
+        console.log(token)
+        
     }
 
     const user = {
         token: token,
-        loggedIn: (token !== null),
+        loggedIn: (token !== null && !isExp),
     }
     games = games.slice(0,12)
     return {user, games, runs};
@@ -54,7 +55,7 @@ export default function Home() {
                         <Time 
                             disableLink={true}
                             content={{
-                                user: 'Username',
+                                user: {login: "Username", userId: ""},
                                 time: 'Time',
                                 type: 'Type',
                                 date: 'Date',
@@ -72,7 +73,7 @@ export default function Home() {
                             return stortByDate(a.date, b.date)
                         }).map((x, i) => {
                             return {
-                                user: x.user.login,
+                                user: x.user,
                                 time: x.time,
                                 type: x.type,
                                 date: x.date.substring(0, 19).replace('T', " "),

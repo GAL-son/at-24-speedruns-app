@@ -16,7 +16,8 @@ export default function GameCard(props) {
                     {content.name}
                     </span>
                 </h5>
-                <div className='game-card-hidden d-flex flex-column'>
+                {(content.releaseYear !== undefined && content.averageRating !== undefined && content.gameOnPlatforms!==undefined) && 
+                    <div className='game-card-hidden d-flex flex-column'>
                     <div className='game-card-year text-center'>
                         -{content.releaseYear}-
                     </div>
@@ -24,7 +25,7 @@ export default function GameCard(props) {
                         <ScoreCounter value={content.averageRating}/>
                     </div>
                     <div className='game-card-desc'>
-                        {content.description.substring(0, 80) + (content.description.length >= 80 ? "...": "")}
+                        {(content.description !== undefined) && content.description.substring(0, 80) + (content.description.length >= 80 ? "...": "")}
                     </div>
                     <div className='d-flex flex-row flex-wrap justify-content-center platform-badges'>
 
@@ -35,6 +36,7 @@ export default function GameCard(props) {
                         })}
                     </div>
                 </div>
+                }
             </div>
             <div className='gradient-hover game-card-bg-gradient'>    
             </div>

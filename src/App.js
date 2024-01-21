@@ -11,6 +11,7 @@ import AllGames, {loader as allGamesLoader} from './pages/allGames';
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Game, {loader as gameLoader} from './pages/game';
+import User , {loader as userLoader} from './pages/user';
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +44,12 @@ function App() {
           loader: gameLoader,
           errorElement: <ErrorPage/>,
           element: <Game/>
+        },
+        {
+          path:'user/:id',
+          loader: userLoader,
+          errorElement: <ErrorPage/>,
+          element: <User/>
         }
 
       ]

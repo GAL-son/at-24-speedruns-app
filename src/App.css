@@ -34,6 +34,8 @@
 }
 
 .disabled-link {
+  text-decoration: none;
+  color: white;
   pointer-events: none;
   cursor: pointer;
 }

@@ -14,6 +14,17 @@ export const getUsers = () => {
         })
 }
 
+export const getUser = (id) => {
+    return axios.get(`${userBaseURL}/${id}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            // console.log(err)
+            throw err
+        })
+}
+
 export const register = (login,email,password,role) => {
     const data={
         login:login,

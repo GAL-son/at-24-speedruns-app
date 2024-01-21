@@ -1,0 +1,60 @@
+.user {
+    padding: 1rem;
+}
+
+.user-info {
+    /* border: 1px red dashed; */
+    width: 40%;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+.user-name {
+    font-size: 7rem;
+}
+
+.user-rest {
+    /* border: 1px yellow dashed; */
+    width: 70%
+}
+
+.user .game-cards > .game-card {
+    height: 9rem;
+    width: 7rem;
+    border-radius: 0.5rem;
+    margin: 0.3rem;
+    
+}
+
+.user .games-container{
+    padding: 1rem;    
+    background-color: rgba(0, 59, 29, 0.716);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user .game-card-info h5 {
+    /* border: 1px green dashed; */
+    position: relative;
+    top: 0%;
+}
+
+.user .game-card:hover h5 {
+    top: -15%
+}
+
+.user .admin-icon img {
+    height: 60px;
+    width: 60px;
+}
+
+.follow-icon img {
+    margin-left: 50px;
+    height: 80px;
+    width: 90px;
+}
+
+.user .user-bar {
+    background-color: rgba(0, 59, 29, 0.716);
+    border-radius: 1rem;
+}
