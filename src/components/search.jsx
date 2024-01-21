@@ -28,7 +28,9 @@ export default function Search(params) {
     const [searchFocused, setSearchFocused] = useState(false)
     const [searchInput, setSearchInput] = useState("")
 
-    const handleFocus = (e) => setSearchFocused(true);
+    const handleFocus = (e) =>{ 
+        setSearchFocused(true)
+    };
     const handleBlur = (e) => {
         e.preventDefault()
 
@@ -61,8 +63,8 @@ export default function Search(params) {
                 setTimeout(() => {
                     const filter = getSearchFilter(newVal)
                     // console.log(data.filter(filter).slice(0))
-                    setSearchData(data.filter(filter).slice())
-                }, 1000)
+                    setSearchData(data.filter(filter).slice(0,getLimit()))
+                }, 500)
             }).catch(err => {
                 console.error(err)
                 setSearchError(true)

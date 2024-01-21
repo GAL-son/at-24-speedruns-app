@@ -53,6 +53,7 @@ export default function Login() {
                         }
                         finally {
                             navigation("/")
+                            window.location.reload()
                         }
                     }
                 }else {

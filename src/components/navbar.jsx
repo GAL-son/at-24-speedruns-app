@@ -52,12 +52,13 @@ export default function Navbar(params) {
                     isDropdown={true}
                     searchFilter={searchFilter}
                     dropdownDataSource={getGames}
+                    dropdownLimit={6}
                     dropdownItem={searchItem}
                     searchHint={"Search games..."}
                 /></div>
 
                 {/* Account info Component */}
-                <Link to='login' className='btn btn-login me-2'>{(loginState && isExpired(tokenDecode)) ? "Account" : "Login"}</Link>
+                <Link to='login' className='btn btn-login me-2'>{(loginState && isExpired(tokenDecode)) ? tokenDecode.sub : "Login"}</Link>
 
             </div>
         </nav>
