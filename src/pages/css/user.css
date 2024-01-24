@@ -10,7 +10,7 @@
 }
 
 .user-name {
-    font-size: 7rem;
+    font-size: 4rem;
 }
 
 .user-rest {
@@ -57,6 +57,7 @@
 .user .user-bar {
     background-color: rgba(0, 59, 29, 0.716);
     border-radius: 1rem;
+    padding: 1rem;;
 }
 
 .user .user-link {

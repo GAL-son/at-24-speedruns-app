@@ -89,6 +89,7 @@ export default function User() {
         }
 
         setFollowers()
+        revalidator.revalidate()
         
     }, [])
 
@@ -117,7 +118,7 @@ export default function User() {
                                 <img src={wrench} alt="ADMIN" />
                             </div>
                         }
-                        <h1  className='user-name'>{user.login}</h1>
+                        <h1  className='user-name text-wrap'>{user.login}</h1>
                         
                         <div className='follow-icon' onClick={e => {
                             if(user.userId == decodeToken(token).id) return;
@@ -127,7 +128,6 @@ export default function User() {
                                     setFollow(true)
                                 }).catch(err => {
                                     console.error(err)
-                                    setFollow(false)
                                 })    
                             } else {
                                 deleteFollow(decodeToken(token).id, user.userId, token).then(x => {
@@ -139,7 +139,7 @@ export default function User() {
                             <img src={(follow) ? star : starGray} alt=""/>
                         </div>
                     </div>
-                    <div className='m-2'>Myself</div>
+                    {(user.userId == decodeToken(token).id) && <div className='m-2'>Myself</div>}
                 </div>
                 {(user.userId == decodeToken(token).id) && 
                 <>
