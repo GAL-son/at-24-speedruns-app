@@ -12,7 +12,8 @@ Open application root folder in terminal and type:
 ```npm install```
 
 to install all nesesary node modules.
-Next lauunch the app by typing
+Next lauunch the app by typing:
+
 ```npm start```
 
 Application will be avaliable via web browser under adress `https://localhost:3000`
